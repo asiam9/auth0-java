@@ -48,7 +48,7 @@ public class UserIdentity {
     @SerializedName(PROVIDER_KEY)
     protected String provider;
     @SerializedName(IS_SOCIAL_KEY)
-    protected boolean social;
+    protected Boolean social;
     @SerializedName(ACCESS_TOKEN_KEY)
     protected String accessToken;
     @SerializedName(ACCESS_TOKEN_SECRET_KEY)
@@ -67,7 +67,7 @@ public class UserIdentity {
         }
         this.connection = (String) values.get(CONNECTION_KEY);
         this.provider = (String) values.get(PROVIDER_KEY);
-        this.social = (boolean) values.get(IS_SOCIAL_KEY);
+        this.social = (Boolean) values.get(IS_SOCIAL_KEY);
         this.accessToken = (String) values.get(ACCESS_TOKEN_KEY);
         this.accessTokenSecret = (String) values.get(ACCESS_TOKEN_SECRET_KEY);
         this.profileInfo = (Map<String, Object>) values.get(PROFILE_DATA_KEY);
@@ -96,7 +96,7 @@ public class UserIdentity {
         return provider;
     }
 
-    public boolean isSocial() {
+    public Boolean isSocial() {
         return social;
     }
 
@@ -114,5 +114,18 @@ public class UserIdentity {
 
     public String getUserIdentityId() {
         return String.format("%s|%s", this.provider, this.id);
+    }
+
+    @Override
+    public String toString() {
+        return "UserIdentity{" +
+                "id='" + id + '\'' +
+                ", connection='" + connection + '\'' +
+                ", provider='" + provider + '\'' +
+                ", social=" + social +
+                ", accessToken='" + accessToken + '\'' +
+                ", accessTokenSecret='" + accessTokenSecret + '\'' +
+                ", profileInfo=" + profileInfo +
+                '}';
     }
 }
